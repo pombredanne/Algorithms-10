@@ -1,9 +1,9 @@
-#define White 0
-#define Gray 1
-#define Black -1
+#define WHITE 0
+#define GRAY 1
+#define BLACK -1
 
-#define Nil 0
-#define Inf -1
+#define NIL 0
+#define INF -1
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -93,11 +93,11 @@ void BFS(Graph* G, int s)
 	int i;
 	for(i = 1; i <= (G->v); i++)
 	{
-		(G->arr[i]).color = White;
-		(G->arr[i]).d = Inf;
-		(G->arr[i]).p = Nil;
+		(G->arr[i]).color = WHITE;
+		(G->arr[i]).d = INF;
+		(G->arr[i]).p = NIL;
 	}
-	(G->arr[s]).color = Gray;
+	(G->arr[s]).color = GRAY;
 	(G->arr[s]).d = 0;
 	Queue* Q = init_Queue(Q);
 	Enqueue(Q, s);
@@ -107,16 +107,16 @@ void BFS(Graph* G, int s)
 		vertex *temp =( G->arr[u]).head;
 		while( temp != NULL)
 		{	
-			if(G->arr[temp->key].color == White)
+			if(G->arr[temp->key].color == WHITE)
 			{
-				(G->arr[temp->key]).color = Gray;
+				(G->arr[temp->key]).color = GRAY;
 				(G->arr[temp->key]).d = (G->arr[u]).d + 1;
 				(G->arr[temp->key]).p = u;
 				Enqueue(Q, temp->key);
 			}
 			temp = temp->next;
 		}
-		G->arr[u].color = Black;  	
+		G->arr[u].color = BLACK;  	
 	}
 	bfs_check(G, s);
 	printf("Breadth First Implementation Complete.\n");
@@ -165,26 +165,6 @@ void main(){
 	int n;
 	printf("Enter the node for BFS:");
 	scanf("%d", &n);
-	print_graph(G);
+	print_graph(Graph);
 	BFS(G,n);
 }
-
-
-
-
-
- 
-
-
- 
-
-
-
-
-
-
-
-
- 
-
-
